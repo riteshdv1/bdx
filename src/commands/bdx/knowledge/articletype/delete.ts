@@ -34,7 +34,7 @@ export default class KnowledgeArticleTypeDelete extends SfdxCommand {
             '</types>' +
             '</Package>';
 
-        await exec(`sfdx force:schema:sobject:describe -s ${objectName}__kav -u ${this.flags.targetusername} --json`)
+        //await exec(`sfdx force:schema:sobject:describe -s ${objectName}__kav -u ${this.flags.targetusername} --json`)
 
         //create a folder
         fs.mkdir("./" + folderName, function (err) {
