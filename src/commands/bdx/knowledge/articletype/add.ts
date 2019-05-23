@@ -3,7 +3,7 @@ import child_process = require('child_process');
 import util = require('util');
 import fs = require('fs');
 import rimraf = require("rimraf");
-import colors = require('colors');
+//import colors = require('colors');
 //import * as stripcolor from 'strip-color';
 
 const exec = util.promisify(child_process.exec);
@@ -60,40 +60,36 @@ export default class KnowledgeArticleTypeAdd extends SfdxCommand {
 
         //Create a folder
         fs.mkdir("./" + folderName, function (err) {
-            if (err) console.error(err)
-            else console.log('Successfully create knowledge Folder'.yellow)
+            if (err) return false
+            else return true
         });
 
         fs.mkdir("./" + folderName + "/objects", function (err) {
-            if (err) console.error(err)
-            else console.log('Successfully create Objects Folder'.yellow)
+            if (err) return false
+            else return true
         });
 
         fs.writeFile("./" + folderName + "/objects/" + objectName + "__kav.object", objectFileStr, function (err) {
-            if (err) {
-                console.log(err);
-            } else {
-                console.log("The file was saved!".yellow);
-            }
+            if (err) return false
+            else return true
         });
 
         fs.writeFile("./" + folderName + "/package.xml", packageXmlStr, function (err) {
-            if (err) {
-                console.log(err);
-            } else {
-                console.log(colors.yellow("The file was saved!"));
-            }
+            if (err) return false
+            else return true
         });
 
         try {
-            var yourscript = await exec(`sfdx force:mdapi:deploy -d ${folderName} -w 10 -u ${this.flags.targetusername} --json`)
-            console.log(colors.green(yourscript.stdout));
+            await exec(`sfdx force:mdapi:deploy -d ${folderName} -w 10 -u ${this.flags.targetusername} --json`)
+            //console.log(colors.green(yourscript.stdout));
+            return true;
         } catch (Exception) {
-            return console.log(colors.red(Exception));
+            //return console.log(colors.red(Exception));
+            return false;
         } finally {
             rimraf('./' + folderName, (err) => {
-                if (err) throw err;
-                console.log(colors.green("success"));
+                if (err) return false
+                else return true
             });
         }
     }

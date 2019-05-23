@@ -3,7 +3,7 @@ import child_process = require('child_process');
 import util = require('util');
 import fs = require('fs');
 import rimraf = require("rimraf");
-import colors = require('colors');
+//import colors = require('colors');
 //import * as stripcolor from 'strip-color';
 
 const exec = util.promisify(child_process.exec);
@@ -34,51 +34,33 @@ export default class KnowledgeArticleTypeDelete extends SfdxCommand {
             '</types>' +
             '</Package>';
 
-        //Check if the object already exists
-        /* var validationResult = await exec(`sfdx force:schema:sobject:describe -s ${objectName}__kav -u ${this.flags.targetusername} --json`)
-         const validationStatus = JSON.parse(stripcolor(validationResult.stdout)).status;
-         if (validationStatus == 1) { //Status '0' means object exists
-             return "The article type doesn't exist"
-         }*/
-
-        try {
-            await exec(`sfdx force:schema:sobject:describe -s ${objectName}__kav -u ${this.flags.targetusername} --json`)
-        } catch (Exception) {
-            console.log(colors.red("Article type doesn't exist"));
-            return;
-        }
+        await exec(`sfdx force:schema:sobject:describe -s ${objectName}__kav -u ${this.flags.targetusername} --json`)
 
         //create a folder
         fs.mkdir("./" + folderName, function (err) {
-            if (err) console.error(err)
-            else console.log('Successfully create knowledge Folder'.yellow)
+            if (err) return false
+            else return true
         });
 
         fs.writeFile("./" + folderName + "/destructiveChanges.xml", destructXmlStr, function (err) {
-            if (err) {
-                console.log(err);
-            } else {
-                console.log("The file was saved!".yellow);
-            }
+            if (err) return false
+            else return true
         });
 
         fs.writeFile("./" + folderName + "/package.xml", packageXmlStr, function (err) {
-            if (err) {
-                console.log(err);
-            } else {
-                console.log("The file was saved!".yellow);
-            }
+            if (err) return false
+            else return true
         });
 
         try {
-            var yourscript = await exec(`sfdx force:mdapi:deploy -d ${folderName} -w 10 -u ${this.flags.targetusername} --json`)
-            console.log(colors.green(yourscript.stdout));
+            await exec(`sfdx force:mdapi:deploy -d ${folderName} -w 10 -u ${this.flags.targetusername} --json`)
+            return true
         } catch (Exception) {
-            return console.log(colors.red(Exception));
+            return false
         } finally {
             rimraf('./' + folderName, (err) => {
-                if (err) throw err;
-                console.log(colors.green("success"));
+                if (err) return false
+                else return true
             });
         }
     }
