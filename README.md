@@ -24,7 +24,7 @@ $ npm install -g bdx
 $ sfdx COMMAND
 running command...
 $ sfdx (-v|--version|version)
-bdx/0.0.0 win32-x64 node-v10.13.0
+bdx/1.0.0 win32-x64 node-v10.13.0
 $ sfdx --help [COMMAND]
 USAGE
   $ sfdx COMMAND
@@ -74,7 +74,7 @@ OPTIONS
                                                                                     this command invocation
 ```
 
-_See code: [src\commands\bdx\knowledge\articletype\add.ts](https://github.com/codeBase/bdx/blob/v0.0.0/src\commands\bdx\knowledge\articletype\add.ts)_
+_See code: [src\commands\bdx\knowledge\articletype\add.ts](https://github.com/codeBase/bdx/blob/v1.0.0/src\commands\bdx\knowledge\articletype\add.ts)_
 
 ## `sfdx bdx:knowledge:articletype:delete -n <string> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
@@ -101,7 +101,7 @@ OPTIONS
                                                                                     this command invocation
 ```
 
-_See code: [src\commands\bdx\knowledge\articletype\delete.ts](https://github.com/codeBase/bdx/blob/v0.0.0/src\commands\bdx\knowledge\articletype\delete.ts)_
+_See code: [src\commands\bdx\knowledge\articletype\delete.ts](https://github.com/codeBase/bdx/blob/v1.0.0/src\commands\bdx\knowledge\articletype\delete.ts)_
 
 ## `sfdx bdx:knowledge:validationstatus:add -n <string> [-b] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
@@ -131,7 +131,7 @@ OPTIONS
                                                                                     this command invocation
 ```
 
-_See code: [src\commands\bdx\knowledge\validationstatus\add.ts](https://github.com/codeBase/bdx/blob/v0.0.0/src\commands\bdx\knowledge\validationstatus\add.ts)_
+_See code: [src\commands\bdx\knowledge\validationstatus\add.ts](https://github.com/codeBase/bdx/blob/v1.0.0/src\commands\bdx\knowledge\validationstatus\add.ts)_
 
 ## `sfdx hello:org [-n <string>] [-f] [-v <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
@@ -169,7 +169,7 @@ EXAMPLES
      Hello myname! This is org: MyOrg and I will be around until Tue Mar 20 2018!
 ```
 
-_See code: [src\commands\hello\org.ts](https://github.com/codeBase/bdx/blob/v0.0.0/src\commands\hello\org.ts)_
+_See code: [src\commands\hello\org.ts](https://github.com/codeBase/bdx/blob/v1.0.0/src\commands\hello\org.ts)_
 <!-- commandsstop -->
 * [`sfdx hello:org [-n <string>] [-f] [-v <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-helloorg--n-string--f--v-string--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 
