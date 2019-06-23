@@ -17,8 +17,22 @@ bdx
 <!-- tocstop -->
 * [Debugging your plugin](#debugging-your-plugin)
 <!-- tocstop -->
+* [Debugging your plugin](#debugging-your-plugin)
+<!-- tocstop -->
 <!-- install -->
 <!-- usage -->
+```sh-session
+$ npm install -g bdx
+$ sfdx COMMAND
+running command...
+$ sfdx (-v|--version|version)
+bdx/1.0.2 win32-x64 node-v10.13.0
+$ sfdx --help [COMMAND]
+USAGE
+  $ sfdx COMMAND
+...
+```
+<!-- usagestop -->
 ```sh-session
 $ npm install -g bdx
 $ sfdx COMMAND
@@ -44,6 +58,133 @@ USAGE
 ```
 <!-- usagestop -->
 <!-- commands -->
+* [`sfdx bdx:knowledge:articletype:add -n <string> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-bdxknowledgearticletypeadd--n-string--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
+* [`sfdx bdx:knowledge:articletype:delete -n <string> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-bdxknowledgearticletypedelete--n-string--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
+* [`sfdx bdx:knowledge:validationstatus:add -n <string> [-b] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-bdxknowledgevalidationstatusadd--n-string--b--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
+* [`sfdx hello:org [-n <string>] [-f] [-v <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-helloorg--n-string--f--v-string--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
+
+## `sfdx bdx:knowledge:articletype:add -n <string> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
+
+Add Article Type
+
+```
+USAGE
+  $ sfdx bdx:knowledge:articletype:add -n <string> [-u <string>] [--apiversion <string>] [--json] [--loglevel 
+  trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
+
+OPTIONS
+  -n, --name=name                                                                   (required) name of article type to
+                                                                                    be added
+
+  -u, --targetusername=targetusername                                               username or alias for the target
+                                                                                    org; overrides default target org
+
+  --apiversion=apiversion                                                           override the api version used for
+                                                                                    api requests made by this command
+
+  --json                                                                            format output as json
+
+  --loglevel=(trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL)  [default: warn] logging level for
+                                                                                    this command invocation
+```
+
+_See code: [src\commands\bdx\knowledge\articletype\add.ts](https://github.com/codeBase/bdx/blob/v1.0.2/src\commands\bdx\knowledge\articletype\add.ts)_
+
+## `sfdx bdx:knowledge:articletype:delete -n <string> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
+
+Delete article type
+
+```
+USAGE
+  $ sfdx bdx:knowledge:articletype:delete -n <string> [-u <string>] [--apiversion <string>] [--json] [--loglevel 
+  trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
+
+OPTIONS
+  -n, --name=name                                                                   (required) name of article type to
+                                                                                    be deleted
+
+  -u, --targetusername=targetusername                                               username or alias for the target
+                                                                                    org; overrides default target org
+
+  --apiversion=apiversion                                                           override the api version used for
+                                                                                    api requests made by this command
+
+  --json                                                                            format output as json
+
+  --loglevel=(trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL)  [default: warn] logging level for
+                                                                                    this command invocation
+```
+
+_See code: [src\commands\bdx\knowledge\articletype\delete.ts](https://github.com/codeBase/bdx/blob/v1.0.2/src\commands\bdx\knowledge\articletype\delete.ts)_
+
+## `sfdx bdx:knowledge:validationstatus:add -n <string> [-b] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
+
+Add a global picklist value
+
+```
+USAGE
+  $ sfdx bdx:knowledge:validationstatus:add -n <string> [-b] [-u <string>] [--apiversion <string>] [--json] [--loglevel 
+  trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
+
+OPTIONS
+  -b, --showbrowser                                                                 show the browser...useful for local
+                                                                                    debugging
+
+  -n, --name=name                                                                   (required) name of the Global
+                                                                                    Picklist
+
+  -u, --targetusername=targetusername                                               username or alias for the target
+                                                                                    org; overrides default target org
+
+  --apiversion=apiversion                                                           override the api version used for
+                                                                                    api requests made by this command
+
+  --json                                                                            format output as json
+
+  --loglevel=(trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL)  [default: warn] logging level for
+                                                                                    this command invocation
+```
+
+_See code: [src\commands\bdx\knowledge\validationstatus\add.ts](https://github.com/codeBase/bdx/blob/v1.0.2/src\commands\bdx\knowledge\validationstatus\add.ts)_
+
+## `sfdx hello:org [-n <string>] [-f] [-v <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
+
+print a greeting and your org IDs
+
+```
+USAGE
+  $ sfdx hello:org [-n <string>] [-f] [-v <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel 
+  trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
+
+OPTIONS
+  -f, --force                                                                       example boolean flag
+  -n, --name=name                                                                   name to print
+
+  -u, --targetusername=targetusername                                               username or alias for the target
+                                                                                    org; overrides default target org
+
+  -v, --targetdevhubusername=targetdevhubusername                                   username or alias for the dev hub
+                                                                                    org; overrides default dev hub org
+
+  --apiversion=apiversion                                                           override the api version used for
+                                                                                    api requests made by this command
+
+  --json                                                                            format output as json
+
+  --loglevel=(trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL)  [default: warn] logging level for
+                                                                                    this command invocation
+
+EXAMPLES
+  $ sfdx hello:org --targetusername myOrg@example.com --targetdevhubusername devhub@org.com
+     Hello world! This is org: MyOrg and I will be around until Tue Mar 20 2018!
+     My hub org id is: 00Dxx000000001234
+  
+  $ sfdx hello:org --name myname --targetusername myOrg@example.com
+     Hello myname! This is org: MyOrg and I will be around until Tue Mar 20 2018!
+```
+
+_See code: [src\commands\hello\org.ts](https://github.com/codeBase/bdx/blob/v1.0.2/src\commands\hello\org.ts)_
+<!-- commandsstop -->
 * [`sfdx bdx:knowledge:articletype:add -n <string> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-bdxknowledgearticletypeadd--n-string--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 * [`sfdx bdx:knowledge:articletype:delete -n <string> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-bdxknowledgearticletypedelete--n-string--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 * [`sfdx bdx:knowledge:validationstatus:add -n <string> [-b] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-bdxknowledgevalidationstatusadd--n-string--b--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
