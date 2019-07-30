@@ -2,7 +2,6 @@ import { flags, SfdxCommand } from "@salesforce/command";
 import child_process = require("child_process");
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
-import colors = require("colors");
 
 export default class GitCompare extends SfdxCommand {
   public static description = "Retrieves list of commits between two commits";
@@ -64,8 +63,8 @@ export default class GitCompare extends SfdxCommand {
 
     let lpromise=await this.getFileHistory(values[3])
         .then(result => {
-           return this.displayOutput(result) 
-           }); 
+           return this.displayOutput(result)
+           });
 
     if(this.flags.haschanged){
       lpromise=lpromise.filter(element=>element.result.hasChanged=true)
@@ -110,7 +109,7 @@ export default class GitCompare extends SfdxCommand {
     return new Promise(function (resolve, reject) {
         let commitHistory = [];
         const processFiles = async () => {
-            for (const element of changedfiles) {          
+            for (const element of changedfiles) {
                 await getHistory(element);
             }
         }
@@ -120,16 +119,16 @@ export default class GitCompare extends SfdxCommand {
                 if (element.length === 0) {
                     resolve();
                     return;
-                }             
+                }
                 let commits = [];
                 let spawn = require('child_process').spawn;
                 let diff = spawn('git', ['log', GitCompare.commitFrom + '..' + GitCompare.commitTo, "--pretty=%H-|-%s",  "--",  element]);
-                
-                diff.stdout.on('data', function (data) {    
-                    commits = commits.concat((data +'').split('\n'));                     
+
+                diff.stdout.on('data', function (data) {
+                    commits = commits.concat((data +'').split('\n'));
                 });
-    
-                diff.on('close', function (code) { 
+
+                diff.on('close', function (code) {
                     commits.forEach(commitEntry => {
                         if (commitEntry != '') {
                             let commitid =  commitEntry.split('-|-')[0];
@@ -151,10 +150,10 @@ export default class GitCompare extends SfdxCommand {
                                           }
                             commitHistory.push(commitHistoryItem);
                         }
-                    });           
-                    resolve(); 
+                    });
+                    resolve();
                 });
-    
+
                 diff.stderr.on('data', function (data) {
                     console.error('stderr1: ' + data);
                 });
@@ -181,7 +180,7 @@ async displayOutput(commitHistory) {
                 path.result.commits.push(commitHistoryItem);
                 if (!path.result.changeFileSummary.includes(commitHistoryItem.filename)){
                     path.result.changeFileSummary.push(commitHistoryItem.filename);
-                }                        
+                }
                 commitHistoryItem.jiraItems.forEach(jiraItem => {
                     if (!path.result.jiraItemsSummary.includes(jiraItem)){
                         path.result.jiraItemsSummary.push(jiraItem);
@@ -189,7 +188,7 @@ async displayOutput(commitHistory) {
                 })
             }
         })
-     }); 
+     });
     return GitCompare.resultOutput
 }
 }
