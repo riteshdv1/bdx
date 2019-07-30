@@ -1,7 +1,7 @@
 import { flags, SfdxCommand } from "@salesforce/command";
 import child_process = require("child_process");
-const util = require('util');
-const exec = util.promisify(require('child_process').exec);
+import util = require('util');
+const exec = util.promisify(child_process.exec);
 
 export default class GitCompare extends SfdxCommand {
   public static description = "Retrieves list of commits between two commits";
