@@ -28,7 +28,7 @@ $ npm install -g bdx
 $ sfdx COMMAND
 running command...
 $ sfdx (-v|--version|version)
-bdx/1.0.3 win32-x64 node-v10.13.0
+bdx/1.0.4 win32-x64 node-v10.13.0
 $ sfdx --help [COMMAND]
 USAGE
   $ sfdx COMMAND
@@ -112,7 +112,7 @@ OPTIONS
                                                                                     only
 ```
 
-_See code: [lib\commands\bdx\git\compare.js](https://github.com/codeBase/bdx/blob/v1.0.3/lib\commands\bdx\git\compare.js)_
+_See code: [lib\commands\bdx\git\compare.js](https://github.com/codeBase/bdx/blob/v1.0.4/lib\commands\bdx\git\compare.js)_
 
 ## `sfdx bdx:knowledge:articletype:add -n <string> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
@@ -139,7 +139,7 @@ OPTIONS
                                                                                     this command invocation
 ```
 
-_See code: [lib\commands\bdx\knowledge\articletype\add.js](https://github.com/codeBase/bdx/blob/v1.0.3/lib\commands\bdx\knowledge\articletype\add.js)_
+_See code: [lib\commands\bdx\knowledge\articletype\add.js](https://github.com/codeBase/bdx/blob/v1.0.4/lib\commands\bdx\knowledge\articletype\add.js)_
 
 ## `sfdx bdx:knowledge:articletype:delete -n <string> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
@@ -166,7 +166,7 @@ OPTIONS
                                                                                     this command invocation
 ```
 
-_See code: [lib\commands\bdx\knowledge\articletype\delete.js](https://github.com/codeBase/bdx/blob/v1.0.3/lib\commands\bdx\knowledge\articletype\delete.js)_
+_See code: [lib\commands\bdx\knowledge\articletype\delete.js](https://github.com/codeBase/bdx/blob/v1.0.4/lib\commands\bdx\knowledge\articletype\delete.js)_
 
 ## `sfdx bdx:org:packages:compare -s <string> -t <string> [-p <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
@@ -192,7 +192,7 @@ OPTIONS
                                                                                     this command invocation
 ```
 
-_See code: [lib\commands\bdx\org\packages\compare.js](https://github.com/codeBase/bdx/blob/v1.0.3/lib\commands\bdx\org\packages\compare.js)_
+_See code: [lib\commands\bdx\org\packages\compare.js](https://github.com/codeBase/bdx/blob/v1.0.4/lib\commands\bdx\org\packages\compare.js)_
 
 ## `sfdx bdx:org:packages:sync -s <string> -t <string> [-p <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
@@ -218,7 +218,7 @@ OPTIONS
                                                                                     this command invocation
 ```
 
-_See code: [lib\commands\bdx\org\packages\sync.js](https://github.com/codeBase/bdx/blob/v1.0.3/lib\commands\bdx\org\packages\sync.js)_
+_See code: [lib\commands\bdx\org\packages\sync.js](https://github.com/codeBase/bdx/blob/v1.0.4/lib\commands\bdx\org\packages\sync.js)_
 
 ## `sfdx bdx:project:get:excludepath [-i <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
@@ -239,7 +239,7 @@ OPTIONS
                                                                                     this command invocation
 ```
 
-_See code: [lib\commands\bdx\project\get\excludepath.js](https://github.com/codeBase/bdx/blob/v1.0.3/lib\commands\bdx\project\get\excludepath.js)_
+_See code: [lib\commands\bdx\project\get\excludepath.js](https://github.com/codeBase/bdx/blob/v1.0.4/lib\commands\bdx\project\get\excludepath.js)_
 
 ## `sfdx bdx:project:get:mdapipath [-i <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
@@ -260,7 +260,7 @@ OPTIONS
                                                                                     this command invocation
 ```
 
-_See code: [lib\commands\bdx\project\get\mdapipath.js](https://github.com/codeBase/bdx/blob/v1.0.3/lib\commands\bdx\project\get\mdapipath.js)_
+_See code: [lib\commands\bdx\project\get\mdapipath.js](https://github.com/codeBase/bdx/blob/v1.0.4/lib\commands\bdx\project\get\mdapipath.js)_
 
 ## `sfdx bdx:project:get:packagepath [-i <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
@@ -281,7 +281,7 @@ OPTIONS
                                                                                     this command invocation
 ```
 
-_See code: [lib\commands\bdx\project\get\packagepath.js](https://github.com/codeBase/bdx/blob/v1.0.3/lib\commands\bdx\project\get\packagepath.js)_
+_See code: [lib\commands\bdx\project\get\packagepath.js](https://github.com/codeBase/bdx/blob/v1.0.4/lib\commands\bdx\project\get\packagepath.js)_
 
 ## `sfdx hello:org [-n <string>] [-f] [-v <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
@@ -319,7 +319,7 @@ EXAMPLES
      Hello myname! This is org: MyOrg and I will be around until Tue Mar 20 2018!
 ```
 
-_See code: [lib\commands\hello\org.js](https://github.com/codeBase/bdx/blob/v1.0.3/lib\commands\hello\org.js)_
+_See code: [lib\commands\hello\org.js](https://github.com/codeBase/bdx/blob/v1.0.4/lib\commands\hello\org.js)_
 <!-- commandsstop -->
 * [`sfdx bdx:knowledge:articletype:add -n <string> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-bdxknowledgearticletypeadd--n-string--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 * [`sfdx bdx:knowledge:articletype:delete -n <string> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-bdxknowledgearticletypedelete--n-string--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)

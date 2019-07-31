@@ -21,13 +21,19 @@ export default class ProjectGetPackagePath extends SfdxCommand {
     this.ux.startSpinner("Retrieving package list");
 
     var readObj=await this.r1()
-    var paths = readObj.map(function(item) {
-      var itemObj = {
-        name: item.package,
-        path: item.path
-      };
-      return itemObj;
-    });
+    let paths=[]
+    for(var item of readObj){
+      if(item.package!=undefined 
+        && item.path!=undefined 
+        && item.package!=''
+        && item.path!=''){
+        var itemObj = {
+          name: item.package,
+          path: item.path
+        };
+        paths.push(itemObj)
+      }
+    }
     if (!this.flags.json) this.showTable(paths);
     return Promise.resolve(paths);
   }

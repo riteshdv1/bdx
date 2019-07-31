@@ -24,7 +24,9 @@ export default class ProjectGetMdapiPath extends SfdxCommand {
     } else if (diff.error) {
       return Promise.reject(diff.error);
     } else {
-      const res = (diff.stdout + "").split("\n");
+      let res = (diff.stdout + "").split("\n")
+      res=res.splice(0,res.length-1)
+      
       let mdapiPaths = res.map(function(element) {
         const tempArr = element.split("/");
         var pathObj = {

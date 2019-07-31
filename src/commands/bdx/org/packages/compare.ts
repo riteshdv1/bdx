@@ -149,6 +149,7 @@ export default class OrgPackagesCompare extends SfdxCommand {
         return responseArrayObject;
       })
       .catch(err => {
+        this.ux.log(colors.red(JSON.stringify(err.stderr)));
         return err;
       });
     return result;

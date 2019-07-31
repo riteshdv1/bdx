@@ -136,7 +136,7 @@ export default class GitCompare extends SfdxCommand {
                             let jiraMatches = subject.match(/BT-[0-9]*/);
                             let jiraItems = [];
                             if (jiraMatches != null) {
-                                subject.match(/BT-[0-9]*/).forEach(match => {
+                                subject.match(/BT-[0-9]*/g).forEach(match => {
                                     if (!jiraItems.includes(match)) {
                                         jiraItems.push(match);
                                     }
