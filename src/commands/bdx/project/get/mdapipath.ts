@@ -17,21 +17,21 @@ export default class ProjectGetMdapiPath extends SfdxCommand {
   };
 
   public async run(): Promise<any> {
-    this.ux.startSpinner("Retrieving exclude list");
-    var diff=await this.m1()
+    this.ux.startSpinner("Retrieving mdapi list");
+    var diff = await this.m1()
     if (diff.stderr) {
       return Promise.reject(diff.stderr);
     } else if (diff.error) {
       return Promise.reject(diff.error);
     } else {
       let res = (diff.stdout + "").split("\n")
-      res=res.splice(0,res.length-1)
-      
-      let mdapiPaths = res.map(function(element) {
+      res = res.splice(0, res.length - 1)
+
+      let mdapiPaths = res.map(function (element) {
         const tempArr = element.split("/");
         var pathObj = {
           name: tempArr[tempArr.length - 2],
-          path: element.replace("package.xml", "")
+          path: element.replace("\/package.xml", "").replace("\.\/","")
         };
         return pathObj;
       });
@@ -50,8 +50,8 @@ export default class ProjectGetMdapiPath extends SfdxCommand {
     }
     this.ux.table(responseArrayObject, this.tableColumnData);
   }
-  async m1(){
+  async m1() {
     let command = "find . -name package.xml";
-    return child_process.spawnSync("bash", ["-c", command], { encoding: "utf8"});
+    return child_process.spawnSync("bash", ["-c", command], { encoding: "utf8" });
   }
 }

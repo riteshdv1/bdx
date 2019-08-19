@@ -23,13 +23,13 @@ export default class ProjectGetPackagePath extends SfdxCommand {
     var readObj=await this.r1()
     let paths=[]
     for(var item of readObj){
-      if(item.package!=undefined 
-        && item.path!=undefined 
+      if(item.package!=undefined
+        && item.path!=undefined
         && item.package!=''
         && item.path!=''){
         var itemObj = {
           name: item.package,
-          path: item.path
+          path: item.path.replace("\.\/","")
         };
         paths.push(itemObj)
       }

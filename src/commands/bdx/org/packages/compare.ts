@@ -123,7 +123,7 @@ export default class OrgPackagesCompare extends SfdxCommand {
         for (var key_a of Array.from(a_Map.keys())) {
           if (
             responseArrayObject
-              .map(function(item) {
+              .map(function (item) {
                 return item.packageId;
               })
               .indexOf(key_a) == -1
@@ -149,13 +149,13 @@ export default class OrgPackagesCompare extends SfdxCommand {
         return responseArrayObject;
       })
       .catch(err => {
-        this.ux.log(colors.red(JSON.stringify(err.stderr)));
+        this.ux.log(colors.red(JSON.parse(err.stderr).message));
         return err;
       });
     return result;
   }
   async showOutput(responseArrayObject: any[]) {
-    responseArrayObject = responseArrayObject.map(function(resp_obj) {
+    responseArrayObject = responseArrayObject.map(function (resp_obj) {
       if (resp_obj.isSame) {
         resp_obj.packageName = colors.green(resp_obj.packageName);
         resp_obj.packageId = colors.green(resp_obj.packageId);
