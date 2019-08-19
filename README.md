@@ -86,43 +86,47 @@ USAGE
 ```
 <!-- usagestop -->
 <!-- commands -->
-* [`sfdx bdx:git:compare -f <string> -t <string> [-i <string>] [--haschanged] [--showstoriesonly] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-bdxgitcompare--f-string--t-string--i-string---haschanged---showstoriesonly---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
+* [`sfdx bdx:git:compare -f <string> -t <string> [-i <string>] [-c] [-s] [-d <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-bdxgitcompare--f-string--t-string--i-string--c--s--d-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 * [`sfdx bdx:knowledge:articletype:add -n <string> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-bdxknowledgearticletypeadd--n-string--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 * [`sfdx bdx:knowledge:articletype:delete -n <string> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-bdxknowledgearticletypedelete--n-string--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 * [`sfdx bdx:org:packages:compare -s <string> -t <string> [-p <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-bdxorgpackagescompare--s-string--t-string--p-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
+* [`sfdx bdx:org:packages:sync -s <string> -t <string> [-p <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-bdxorgpackagessync--s-string--t-string--p-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 * [`sfdx bdx:project:get:excludepath [-i <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-bdxprojectgetexcludepath--i-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 * [`sfdx bdx:project:get:mdapipath [-i <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-bdxprojectgetmdapipath--i-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 * [`sfdx bdx:project:get:packagepath [-i <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-bdxprojectgetpackagepath--i-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 * [`sfdx hello:org [-n <string>] [-f] [-v <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-helloorg--n-string--f--v-string--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 
-## `sfdx bdx:git:compare -f <string> -t <string> [-i <string>] [--haschanged] [--showstoriesonly] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
+## `sfdx bdx:git:compare -f <string> -t <string> [-i <string>] [-c] [-s] [-d <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
 Retrieves list of commits between two commits
 
 ```
 USAGE
-  $ sfdx bdx:git:compare -f <string> -t <string> [-i <string>] [--haschanged] [--showstoriesonly] [--json] [--loglevel 
+  $ sfdx bdx:git:compare -f <string> -t <string> [-i <string>] [-c] [-s] [-d <string>] [--json] [--loglevel 
   trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 
 OPTIONS
+  -c, --haschanged                                                                  Use this flag to display the changed
+                                                                                    folders only
+
+  -d, --filepath=filepath                                                           Use this flag to store json response
+                                                                                    in a file
+
   -f, --fromcommit=fromcommit                                                       (required) From commit id
 
   -i, --ignorestory=ignorestory                                                     Mention a story or comma separated
                                                                                     list of stories that needs to be out
                                                                                     of list in format BT-XXXX
 
-  -t, --tocommit=tocommit                                                           (required) To commit id
+  -s, --showstoriesonly                                                             Use this flag to list the stories
+                                                                                    only
 
-  --haschanged                                                                      Use this flag to display the changed
-                                                                                    folders only
+  -t, --tocommit=tocommit                                                           (required) To commit id
 
   --json                                                                            format output as json
 
   --loglevel=(trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL)  [default: warn] logging level for
                                                                                     this command invocation
-
-  --showstoriesonly                                                                 Use this flag to list the stories
-                                                                                    only
 ```
 
 _See code: [lib\commands\bdx\git\compare.js](https://github.com/codeBase/bdx/blob/v1.0.5/lib\commands\bdx\git\compare.js)_
@@ -206,6 +210,32 @@ OPTIONS
 ```
 
 _See code: [lib\commands\bdx\org\packages\compare.js](https://github.com/codeBase/bdx/blob/v1.0.5/lib\commands\bdx\org\packages\compare.js)_
+
+## `sfdx bdx:org:packages:sync -s <string> -t <string> [-p <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
+
+Sync packages of two orgs
+
+```
+USAGE
+  $ sfdx bdx:org:packages:sync -s <string> -t <string> [-p <string>] [--json] [--loglevel 
+  trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
+
+OPTIONS
+  -p, --packageignore=packageignore                                                 comma separated list of package
+                                                                                    names or subscriber id to skip
+                                                                                    installation
+
+  -s, --source=source                                                               (required) name of source org
+
+  -t, --target=target                                                               (required) name of target org
+
+  --json                                                                            format output as json
+
+  --loglevel=(trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL)  [default: warn] logging level for
+                                                                                    this command invocation
+```
+
+_See code: [lib\commands\bdx\org\packages\sync.js](https://github.com/codeBase/bdx/blob/v1.0.5/lib\commands\bdx\org\packages\sync.js)_
 
 ## `sfdx bdx:project:get:excludepath [-i <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
