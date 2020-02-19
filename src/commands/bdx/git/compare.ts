@@ -1,8 +1,13 @@
 import { flags, SfdxCommand } from "@salesforce/command";
 import child_process = require("child_process");
-import util = require('util');
-const exec = util.promisify(child_process.exec);
+//import util = require('util');
+//const exec = util.promisify(child_process.exec);
 import fs = require("fs");
+import ProjectGetPackagePath from "./../project/get/packagepath";
+import ProjectGetMdapiPath from "./../project/get/mdapipath";
+import ProjectGetExcludePath from "./../project/get/excludepath";
+import ProjectGetVlocityPath from "./../project/get/vlocitypath";
+import ProjectGetApexScriptPath from "./../project/get/apexscriptpath";
 
 export default class GitCompare extends SfdxCommand {
   public static description = "Retrieves list of commits between two commits";
@@ -62,20 +67,37 @@ export default class GitCompare extends SfdxCommand {
     GitCompare.commitTo = this.flags.tocommit;
     GitCompare.ignoreStory =
       this.flags.ignoreStory != null ? this.flags.ignoreStory.split(",") : null;
-    var values = await Promise.all([
+    /*var values = await Promise.all([
       exec(`sfdx bdx:project:get:packagepath --json`),
       exec(`sfdx bdx:project:get:mdapipath --json`),
       exec(`sfdx bdx:project:get:excludepath --json`),
-      this.getVlocityPath(),
+      exec(`sfdx bdx:project:get:vlocitypath --json`),
+      exec(`sfdx bdx:project:get:apexscriptpath --json`),
       this.loadChangedFiles()
     ])
     let packPath = JSON.parse(values[0].stdout).result
     let mdapiPath = JSON.parse(values[1].stdout).result
     let excludePath = JSON.parse(values[2].stdout).result
-    let vlocityPath = values[3]
-    GitCompare.resultOutput = packPath.concat(mdapiPath).concat(excludePath).concat(vlocityPath)
+    let vlocityPath = JSON.parse(values[3].stdout).result
+    let apexScriptPaths = JSON.parse(values[4].stdout).result*/
 
-    let lpromise = await this.getFileHistory(values[4])
+    let values = await Promise.all([
+      ProjectGetPackagePath.run([]),
+      ProjectGetMdapiPath.run([]),
+      ProjectGetExcludePath.run([]),
+      ProjectGetVlocityPath.run([]),
+      ProjectGetApexScriptPath.run([]),
+      this.loadChangedFiles()
+     ])
+
+    let packPath = values[0]
+    let mdapiPath = values[1]
+    let excludePath = values[2]
+    let vlocityPath = values[3]
+    let apexScriptPaths = values[4]
+    GitCompare.resultOutput = packPath.concat(mdapiPath).concat(excludePath).concat(vlocityPath).concat(apexScriptPaths)
+
+    let lpromise = await this.getFileHistory(values[5])
       .then(result => {
         return this.displayOutput(result)
       });
@@ -224,16 +246,6 @@ export default class GitCompare extends SfdxCommand {
     }
     this.ux.table(tempArr, this.tableColumnData);
     return tempArr;
-  }
-
-  async getVlocityPath() {
-    let pathArr = [];
-    var pathObj = {
-      name: "vlocity-src",
-      path: "vlocity-src"
-    };
-    pathArr.push(pathObj)
-    return pathArr
   }
 
   async createJsonFile(filepath, lpromise) {

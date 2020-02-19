@@ -6,7 +6,7 @@ export default class ProjectGetPackagePath extends SfdxCommand {
   public static description = "Retrieves list of commits between two commits";
   protected static requiresUsername = false;
   protected static requiresProject = true;
-  protected tableColumnData = ["name", "path"];
+  protected tableColumnData = ["name", "path","version"];
 
   protected static flagsConfig = {
     ignorefolder: flags.string({
@@ -20,7 +20,7 @@ export default class ProjectGetPackagePath extends SfdxCommand {
 
     this.ux.startSpinner("Retrieving package list");
 
-    var readObj=await this.r1()
+    var readObj = await this.r1()
     let paths=[]
     for(var item of readObj){
       if(item.package!=undefined
@@ -29,7 +29,8 @@ export default class ProjectGetPackagePath extends SfdxCommand {
         && item.path!=''){
         var itemObj = {
           name: item.package,
-          path: item.path.replace("\.\/","")
+          path: item.path.replace("\.\/",""),
+          version: item.versionNumber
         };
         paths.push(itemObj)
       }
@@ -37,6 +38,7 @@ export default class ProjectGetPackagePath extends SfdxCommand {
     if (!this.flags.json) this.showTable(paths);
     return Promise.resolve(paths);
   }
+
   async showTable(paths) {
     var responseArrayObject = [];
     for (var element of paths) {
@@ -48,7 +50,8 @@ export default class ProjectGetPackagePath extends SfdxCommand {
     }
     this.ux.table(responseArrayObject, this.tableColumnData);
   }
+
   async r1(){
-    return JSON.parse(fs.readFileSync("sfdx-project.json", "utf8")).packageDirectories
+    return JSON.parse(fs.readFileSync("sfdx-project-packaging.json", "utf8")).packageDirectories
   }
 }

@@ -1,6 +1,7 @@
 import { flags, SfdxCommand } from "@salesforce/command";
 import colors = require("colors");
 import child_process = require("child_process");
+import ProjectGetPackagePath from "./packagepath";
 
 export default class ProjectGetExcludePath extends SfdxCommand {
   public static description = "Retrieves list of commits between two commits";
@@ -17,9 +18,10 @@ export default class ProjectGetExcludePath extends SfdxCommand {
   };
 
   public async run(): Promise<any> {
-    this.ux.startSpinner("Retrieving exclude list");
+    //this.ux.startSpinner("Retrieving exclude list");
     var values = await Promise.all([this.s1(), this.s2()])
-    let packagePath = JSON.parse(values[0])
+    //let packagePath = JSON.parse(values[0])
+    let packagePath = values[0]
     let diff = values[1]
 
     let dxExcludePaths = []
@@ -32,7 +34,7 @@ export default class ProjectGetExcludePath extends SfdxCommand {
       for (var resObj of resultArr) {
         var matchArr = resObj.match(/(.*\/)(.*)(\/main\/default)/);
         var pathObj = { name: "", path: "" };
-        if (matchArr != null && packagePath.result.filter(item => item.path.includes(matchArr[2])).length == 0) {
+        if (matchArr != null && packagePath.filter(item => item.path.includes(matchArr[2])).length == 0) {
           pathObj = {
             name: matchArr[2],
             path: matchArr[1].replace("\.\/","") + matchArr[2]
@@ -56,7 +58,8 @@ export default class ProjectGetExcludePath extends SfdxCommand {
     this.ux.table(responseArrayObject, this.tableColumnData);
   }
   async s1() {
-    return child_process.execSync(`sfdx bdx:project:get:packagepath --json`, { encoding: "utf8" })
+    //return child_process.execSync(`sfdx bdx:project:get:packagepath --json`, { encoding: "utf8" })
+    return ProjectGetPackagePath.run([]);
   }
   async s2() {
     let command = "find . -name default";
