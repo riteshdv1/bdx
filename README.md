@@ -13,6 +13,13 @@ bdx
 [![License](https://img.shields.io/npm/l/bdx.svg)](https://github.com/codeBase/bdx/blob/master/package.json)
 
 <!-- tocstop -->
+* [Steps to use](#Steps to use)
+npm install bdx@latest -g
+npm root -g
+npm install
+sfdx plugins:link $ROOT_PATH/bdx
+
+<!-- tocstop -->
 * [Debugging your plugin](#debugging-your-plugin)
 <!-- tocstop -->
 <!-- install -->
