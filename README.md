@@ -12,12 +12,14 @@ bdx
 [![Downloads/week](https://img.shields.io/npm/dw/bdx.svg)](https://npmjs.org/package/bdx)
 [![License](https://img.shields.io/npm/l/bdx.svg)](https://github.com/codeBase/bdx/blob/master/package.json)
 
-<!-- tocstop -->
-* [Steps to use](#Steps to use)
+
+* Steps to use
+```sh-session
 npm install bdx@latest -g
 npm root -g
 npm install
 sfdx plugins:link $ROOT_PATH/bdx
+```
 
 <!-- tocstop -->
 * [Debugging your plugin](#debugging-your-plugin)
