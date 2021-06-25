@@ -13,7 +13,11 @@ bdx
 [![License](https://img.shields.io/npm/l/bdx.svg)](https://github.com/codeBase/bdx/blob/master/package.json)
 
 
-* Steps to use
+* Install 
+```sh-session
+sfdx plugins:install bdx@latest
+```
+* Steps to use (for dev only)
 ```sh-session
 npm install bdx@latest -g
 npm root -g
