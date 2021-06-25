@@ -8,7 +8,7 @@ import ProjectGetVlocityPath from "./vlocitypath";
 import ProjectGetApexScriptPath from "./apexscriptpath";
 import GitCompare from "./../../git/compare";
 const exec = util.promisify(child_process.exec);
-import colors = require("colors");
+//import colors = require("colors");
 //const excludePathObj = new ProjectGetExcludePath(this.argv,this.config)
 
 export default class ProjectGetReleaseSteps extends SfdxCommand {

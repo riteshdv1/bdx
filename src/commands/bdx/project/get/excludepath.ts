@@ -4,7 +4,7 @@ import child_process = require("child_process");
 import ProjectGetPackagePath from "./packagepath";
 
 export default class ProjectGetExcludePath extends SfdxCommand {
-  public static description = "Retrieves list of commits between two commits";
+  public static description = "Exclude package folders to ignore from search list";
   protected static requiresUsername = false;
   protected static requiresProject = true;
   protected tableColumnData = ["name", "path"];

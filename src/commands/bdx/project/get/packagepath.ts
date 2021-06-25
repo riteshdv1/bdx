@@ -3,7 +3,7 @@ import colors = require("colors");
 import fs = require("fs");
 
 export default class ProjectGetPackagePath extends SfdxCommand {
-  public static description = "Retrieves list of commits between two commits";
+  public static description = "Retrieves list of unlocked package folders";
   protected static requiresUsername = false;
   protected static requiresProject = true;
   protected tableColumnData = ["name", "path","version"];
