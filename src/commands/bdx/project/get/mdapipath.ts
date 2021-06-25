@@ -3,7 +3,7 @@ import colors = require("colors");
 import child_process = require("child_process");
 
 export default class ProjectGetMdapiPath extends SfdxCommand {
-  public static description = "Retrieves list of commits between two commits";
+  public static description = "Retrieves list of mdapi package folders";
   protected static requiresUsername = false;
   protected static requiresProject = true;
   protected tableColumnData = ["name", "path"];

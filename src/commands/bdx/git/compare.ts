@@ -150,7 +150,7 @@ export default class GitCompare extends SfdxCommand {
       const getHistory = element => {
         return new Promise((resolve, reject) => {
           if (element.length === 0) {
-            resolve();
+            Promise.resolve();
             return;
           }
           let commits = [];
@@ -184,7 +184,7 @@ export default class GitCompare extends SfdxCommand {
                 commitHistory.push(commitHistoryItem);
               }
             });
-            resolve();
+            Promise.resolve();
           });
 
           diff.stderr.on('data', function (data) {

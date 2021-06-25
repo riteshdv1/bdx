@@ -1,7 +1,7 @@
 import { SfdxCommand } from "@salesforce/command";
 
 export default class ProjectGetVlocityPath extends SfdxCommand {
-  public static description = "Retrieves list of commits between two commits";
+  public static description = "Retrieves list of vlocity deployable folders";
   protected static requiresUsername = false;
   protected static requiresProject = true;
 

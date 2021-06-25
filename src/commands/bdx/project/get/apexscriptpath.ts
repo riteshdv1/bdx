@@ -3,7 +3,7 @@ import colors = require("colors");
 import child_process = require("child_process");
 
 export default class ProjectGetApexScriptPath extends SfdxCommand {
-  public static description = "Retrieves list of commits between two commits";
+  public static description = "Retrieves path of all the anonymous apex scripts";
   protected static requiresUsername = false;
   protected static requiresProject = true;
   protected tableColumnData = ["name", "path"];
